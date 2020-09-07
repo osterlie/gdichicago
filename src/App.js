@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Navigation from './components/layout/Navigation';
+import Where from './components/pages/Where';
+import Equipment from './components/pages/Equipment';
+import Safety from './components/pages/Safety';
+import Types from './components/pages/Types';
+import Basics from './components/pages/Basics';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="wrapper">
+      <Header />
+      <Router>
+        <div className="container">
+          <Navigation />
+          <Switch>
+            <Route exact path="/" component={Basics} />
+            <Route path="/types" component={Types} />
+            <Route path="/safety" component={Safety} />
+            <Route path="/equipment" component={Equipment} />
+            <Route path="/where" component={Where} />
+          </Switch>
+        </div>
+      </Router> 
+      <Footer />
     </div>
+    
   );
 }
 
